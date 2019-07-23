@@ -1,0 +1,5 @@
+CREATE IF NOT EXIST jobs(
+    id SERIAL PRIMARY KEY,
+    description VARCHAR(255) NOT NULL
+);
+
