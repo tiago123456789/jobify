@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 require("./LoaderVariablesEnvironment");
 const { db } = require("./Database");
+const routesApp = require("../route");
 
 const app = express();
 
@@ -11,12 +12,9 @@ app.use(express.static("public"));
 app.set("views", "views");
 app.set("view engine", "ejs");
 
-app.get("/", (request, response) => {
-    response.render("job/index.ejs");
-});
-
-app.get("/jobs/:id", (request, response) => {
-    response.render("job/detail.ejs");
-});
+/**
+ * @description Set routes application.
+ */
+routesApp(app);
 
 module.exports = app;
