@@ -7,20 +7,26 @@ class JobService {
         this._respository = new JobRepository();
     }
     
-    create($newRegister) {
-        this._respository.create();
+    create(newRegister) {
+        return this._respository.create(newRegister);
     }    
 
     findAll() {
         return this._respository.findAll()
     }
 
-    findById(id) {
-        const job = this._respository.findById(id);
-        if (!job) {
+    async findById(id) {
+        const job = await this._respository.findById(id);
+        const isNull = job.length == 0;
+        if (isNull) {
             throw new NotFoundException("Job not found!");
         }
         return job;
+    }
+
+    async remove(id) {
+        await this.findById(id);
+        return this._respository.remove(id);
     }
 }
 

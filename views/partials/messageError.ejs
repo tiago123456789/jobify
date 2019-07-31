@@ -1,0 +1,12 @@
+<% if (errors) { %>
+
+    <div class="col-md-12">
+        <div class="alert alert-danger">
+            <p>
+                <% errors.map(error => { %>
+                  <strong><%=error%></strong><br/>
+                <%})%>
+            </p>
+        </div>
+    </div>
+<% } %>

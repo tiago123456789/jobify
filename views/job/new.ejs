@@ -15,7 +15,9 @@
             <!-- Main content -->
             <section class="content">
                 <div class="row">
-                    <form action="/jobs/new" class="col-md-12">
+
+                    <% include ../partials/messageError %>
+                    <form action="/jobs/new" method="post" class="col-md-12">
                         <div class="form-group">
                             <label for="title">Title:</label>
                             <input type="text" id="title" name="title" class="form-control" />
@@ -23,12 +25,11 @@
 
                         <div class="form-group">
                             <label for="description">Description:</label>
-                            <textarea name="description" id="description" cols="30" rows="10" 
-                            class="form-control"></textarea>
+                            <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-primary">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="fa fa-save"></i> Save
                             </button>
                             <a href="/jobs" class="btn btn-danger">

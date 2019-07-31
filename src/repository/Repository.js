@@ -6,8 +6,8 @@ class Repository {
         this._table = table;
     }
 
-    create($newRegister) {
-        db(this._table).insert($newRegister);
+    create(newRegister) {
+        return db(this._table).insert(newRegister);
     }
 
     findAll() {
@@ -15,7 +15,11 @@ class Repository {
     }
 
     findById(id) {
-        return db(this._table).where({ id }).select();
+        return db(this._table).where({ id: id }).select();
+    }
+
+    remove(id) {
+        return db(this._table).where({ id: id }).del();
     }
 
     getDb() {
