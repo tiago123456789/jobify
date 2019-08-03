@@ -6,6 +6,10 @@ class Repository {
         this._table = table;
     }
 
+    update(id, datasModified) {
+        return db(this._table).where("id", "=", id).update(datasModified);
+    }
+
     create(newRegister) {
         return db(this._table).insert(newRegister);
     }

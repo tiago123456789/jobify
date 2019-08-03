@@ -6,6 +6,11 @@ class JobService {
     constructor() {
         this._respository = new JobRepository();
     }
+
+    async update(id, datasModified) {
+        await this.findById(id);
+        return this._respository.update(id, datasModified);
+    }
     
     create(newRegister) {
         return this._respository.create(newRegister);
@@ -21,7 +26,7 @@ class JobService {
         if (isNull) {
             throw new NotFoundException("Job not found!");
         }
-        return job;
+        return job[0];
     }
 
     async remove(id) {

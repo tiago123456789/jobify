@@ -11,20 +11,31 @@ class JobController extends Controller {
         this.newJob = this.newJob.bind(this);
         this.create = this.create.bind(this);
         this.remove = this.remove.bind(this);
+        this.edit = this.edit.bind(this);
+        this.update = this.update.bind(this);
     }
 
     async index(request, response) {
-        try {
-            const jobs = await this._service.findAll();
-            response.render("job/index.ejs", { jobs: jobs, errors: null });
-        } catch (e) {
-            console.log(e);
-        }
+        const jobs = await this._service.findAll();
+        response.render("job/index.ejs", { jobs: jobs, errors: null });
     }
 
     async newJob(request, response) {
+        response.render("job/new.ejs", { title: null, description: null, errors: null });
+    }
+
+    async edit(request, response) {
+        const id = request.params.id;
+        const job = await this._service.findById(id);
+        response.render("job/edit.ejs", { ...job, errors: null });
+    }
+
+    async update(request, response) {
         try {
-            response.render("job/new.ejs", { errors: null });
+            const id = request.params.id;
+            const datasModified = request.body;
+            await this._service.update(id, datasModified);
+            response.redirect("/jobs");
         } catch (e) {
             console.log(e);
         }

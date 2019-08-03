@@ -1,4 +1,37 @@
-    <% include ../partials/header.ejs %>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jobify</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../css/skins/_all-skins.min.css">
+    <!-- Morris chart -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+   <% include ../partials/header.ejs %>
 
         <!-- Left side column. contains the logo and sidebar -->
         <% include ../partials/sidebar.ejs %>
@@ -32,7 +65,7 @@
                                         <%- job.description %>
                                     </div>
                                     <div class="panel-footer">
-                                        <a href="" class="btn btn-warning">
+                                        <a href="/jobs/<%=job.id%>/edit" class="btn btn-warning">
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                         <a href="/jobs/<%=job.id%>/delete" onclick="return confirm('Wish delete this register?')"
@@ -48,3 +81,17 @@
                 <!-- /.content -->
             </div>
             <% include ../partials/footer %>
+        </div>
+        <!-- ./wrapper -->
+    
+        <!-- jQuery 3 -->
+        <script src="../js/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../js/adminlte.min.js"></script>
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        <script src="../js/pages/dashboard.js"></script>
+    </body>
+    
+    </html>
