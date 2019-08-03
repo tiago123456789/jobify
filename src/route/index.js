@@ -9,5 +9,7 @@ module.exports = (app) => {
     app.get("/jobs/:id/edit", jobController.edit);
     app.post("/jobs/:id/edit", jobController.update);    
     app.post("/jobs/new", jobController.checkFields(), jobController.create);
+
+    app.get("/auth", (request, response) => response.render("auth/login.ejs"));
     
 }
