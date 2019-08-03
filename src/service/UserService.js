@@ -1,5 +1,6 @@
+const bcrypt = require("bcrypt");
 const UserRepository = require("../repository/UserRepository");
-const NotFoundException = require("../exception/NotFoundException");
+const SecurityException = require("../exception/SecurityException");
 
 class UserService {
 
@@ -7,32 +8,24 @@ class UserService {
         this._respository = new UserRepository();
     }
 
-    async update(id, datasModified) {
-        await this.findById(id);
-        return this._respository.update(id, datasModified);
-    }
-    
-    create(newRegister) {
-        return this._respository.create(newRegister);
-    }    
-
-    findAll() {
-        return this._respository.findAll()
-    }
-
-    async findById(id) {
-        const user = await this._respository.findById(id);
-        const isNull = user.length == 0;
-        if (isNull) {
-            throw new NotFoundException("Job not found!");
+    async authenticate(credentials) {
+        if (!credentials["email"] || !credentials["password"]) {
+            throw new SecurityException("Datas invalids.");
         }
-        return user[0];
+
+        let user = await this._respository.findByEmail(credentials["email"]);
+        user = user[0];
+        const isPasswordValid = await bcrypt.compare(credentials["password"], user["password"]);
+        if (!isPasswordValid) {
+            throw new SecurityException("Datas invalids.");
+        }
+
+        return {
+            "email": user.email,
+            "name": user.name
+        };
     }
 
-    async remove(id) {
-        await this.findById(id);
-        return this._respository.remove(id);
-    }
 }
 
 module.exports = UserService;

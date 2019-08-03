@@ -27,7 +27,7 @@ class Repository {
     }
 
     getDb() {
-        return db;
+        return db(this._table);
     }
 }
 
