@@ -24,6 +24,14 @@ app.use(express.static(__dirname + "/../../public"));
 app.set("views", "views");
 app.set("view engine", "ejs");
 
+app.use((request, response, next) => {
+    if (request.session.user) {
+        app.locals.user = request.session.user;
+    }
+
+    next();
+});
+
 /**
  * @description Set routes application.
  */

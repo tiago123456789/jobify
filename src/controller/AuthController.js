@@ -12,7 +12,11 @@ class AuthController extends Controller {
     }
 
     pageAuth(request, response) {
-        response.render("auth/login.ejs");
+        if (request.session.user) {
+            response.redirect("/jobs");
+        } else {
+            response.render("auth/login.ejs");
+        }
     }
 
     async authenticate(request, response) {
