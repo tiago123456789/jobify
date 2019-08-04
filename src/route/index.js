@@ -1,9 +1,11 @@
 const JobController  = require("../controller/JobController");
 const AuthController = require("../controller/AuthController");
+const HomeController = require("../controller/HomeController");
 const AuthMiddleware = require("../middlewares/AuthMiddleware");
 
 const authController = new AuthController();
 const jobController = new JobController();
+const homeController= new HomeController();
 
 module.exports = (app) => {
 
@@ -17,11 +19,11 @@ module.exports = (app) => {
 
     app.get("/auth", authController.pageAuth);
     app.post("/auth", authController.authenticate);
-    app.use("/auth/logout", (request, response) => {
+    app.get("/auth/logout", (request, response) => {
         request.session.user = null;
         response.redirect("/auth");
     });
-    
+
+    app.get("/home", homeController.index);
     app.use("*", (request, response) => response.redirect("/auth"));
-    
 }

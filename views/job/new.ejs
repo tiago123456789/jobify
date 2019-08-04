@@ -20,10 +20,7 @@
     <link rel="stylesheet" href="../css/skins/_all-skins.min.css">
     <!-- Morris chart -->
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-  <![endif]-->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -54,15 +51,20 @@
                                 <form action="/jobs/new" method="post" class="col-md-12">
                                     <div class="form-group">
                                         <label for="title">Title:</label>
-                                        <input type="text" id="title" name="title" value="<%=title%>" class="form-control" />
+                                        <input type="text" id="title" name="title" class="form-control" />
                                     </div>
 
-                                    <div class="form-group">
+                                    <!-- Create the editor container -->
+                                    <div id="editor" class="form-control" style="height: 250px">
+                                        
+                                    </div>
+
+                                    <div class="form-group hidden">
                                         <label for="description">Description:</label>
-                                        <textarea name="description" id="description" cols="30" rows="10" class="form-control"><%= description %></textarea>
+                                        <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" style="margin-top: 10px">
                                         <button class="btn btn-primary" type="submit">
                                             <i class="fa fa-save"></i> Save
                                         </button>
@@ -70,8 +72,8 @@
                                             <i class="fa fa-close"></i> Cancelar
                                         </a>
                                     </div>
-
                                 </form>
+
                         </div>
                     </section>
                     <!-- /.content -->
@@ -88,6 +90,11 @@
     <script src="../js/adminlte.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../js/pages/dashboard.js"></script>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <!-- Initialize Quill editor -->
+    <script src="../js/editor.js"></script>
 </body>
 
 </html>

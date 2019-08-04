@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jobify</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="css/skins/_all-skins.min.css">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="#" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini">
+                <b>Jb</b>
+            </span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg">
+                <b>Jobify</b>
+            </span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown messages-menu">
+                        <a href="/auth" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-sign-in"></i>
+                            Logar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+    <div class="container" style="margin-top: 50px">
+        <div class="row">
+            <% jobs.map(job => { %>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <%= job.title %>
+                        </div>
+                        <div class="panel-body">
+                            <%- job.description %>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+
+</body>
+
+</html>
