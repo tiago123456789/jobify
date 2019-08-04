@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXIST jobs(
     id SERIAL PRIMARY KEY,
-    description VARCHAR(255) NOT NULL
+    description TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXIST users(
