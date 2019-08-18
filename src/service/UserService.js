@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const UserRepository = require("../repository/UserRepository");
 const SecurityException = require("../exception/SecurityException");
 
