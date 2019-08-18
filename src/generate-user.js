@@ -1,5 +1,5 @@
 require("./config/LoaderVariablesEnvironment");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const db = require("./config/Database")["db"];
 const saltRounds = 10;
 const passwordTextPlain = "123456";
